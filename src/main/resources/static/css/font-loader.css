@@ -1,0 +1,11 @@
+/*** Load Up Incredible Fonts ***/
+
+@font-face {
+    font-family: LatinModernRoman-Regular;
+    src: url(../assets/fonts/lmroman10-regular.woff);
+}
+
+@font-face {
+    font-family: LatinModernMono-Regular;
+    src: url(../assets/fonts/lmmono10-regular.woff);
+}
