@@ -1,6 +1,8 @@
 package com.venkman.mikepedia.dao;
 
-import java.io.File;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -19,13 +21,21 @@ public class DropboxDao {
 	}
 	
 	// THIS DOESN'T WORK YET
-	public static List<File> loadContentFromDropbox() throws DbxException {
+	public static List<String> loadContentFromDropbox() throws DbxException, IOException {
+		List<String> contentList = new ArrayList<String>();
 		DbxEntry.WithChildren listing = client.getMetadataWithChildren("/Mikepedia");
-	    System.out.println("Files in the root path:");
-	    for (DbxEntry child : listing.children) {
-	        System.out.println("	" + child.name + ": " + child.toString());
+	    for (DbxEntry potentialFile : listing.children) {
+	    	ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	    	try {
+	    		client.getFile(potentialFile.path, null, baos);
+	    		contentList.add(baos.toString());
+	    	} catch (Exception e) {
+	    		
+	    	} finally {
+	    		baos.close();
+	    	}
 	    }
-	    return null;
+	    return contentList;
 	}
 
 }

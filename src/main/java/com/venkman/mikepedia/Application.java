@@ -1,21 +1,20 @@
 package com.venkman.mikepedia;
 
 import java.io.IOException;
-import java.util.Locale;
+import java.util.List;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.dropbox.core.DbxClient;
-import com.dropbox.core.DbxEntry;
 import com.dropbox.core.DbxException;
-import com.dropbox.core.DbxRequestConfig;
 import com.venkman.mikepedia.dao.DropboxDao;
 
 @ComponentScan
 @EnableAutoConfiguration
 public class Application {
+	
+	public static ContentRepository contentRepository = new ContentRepository();
 	
 	public static void main(String[] args) throws IOException, DbxException {
 		if (args.length != 1) {
@@ -49,17 +48,24 @@ public class Application {
 //        	System.out.println("something went wrong!");
 //        	e.printStackTrace();
 //        }
-    try {
-    	DropboxDao.initializeDropboxConnection(authCode);
-    	System.out.println("Dropbox connection initialized.");
-    	DropboxDao.loadContentFromDropbox();
-    	System.out.println("Content loaded from Dropbox");
-    } catch (Exception e) {
-    	System.out.println("Something when wrong when loading dropbox content.");
-    	e.printStackTrace();
-    	System.out.println("Exiting...");
-    	System.exit(1);
-    }
+		List<String> contentList = null;
+		try {
+			DropboxDao.initializeDropboxConnection(authCode);
+			System.out.println("Dropbox connection initialized.");
+			contentList = DropboxDao.loadContentFromDropbox();
+			System.out.println("Content loaded from Dropbox");
+		} catch (Exception e) {
+			System.out.println("Something when wrong when loading dropbox content.");
+			e.printStackTrace();
+			System.out.println("Exiting...");
+			System.exit(1);
+		}
+		
+		if (contentList != null) {
+			System.out.println("Adding content from dropbix to content repo.");
+			contentRepository.setUnparsedContentList(contentList);
+			contentRepository.build();
+		}
         
         
 	}
