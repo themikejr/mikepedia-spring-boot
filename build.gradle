@@ -27,6 +27,8 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile group: 'com.dropbox.core', name: 'dropbox-core-sdk', version: '1.7.4'
+    
     testCompile("junit:junit")
 }
 
