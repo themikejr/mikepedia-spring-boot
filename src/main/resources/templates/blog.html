@@ -18,46 +18,13 @@
 					<p th:text="${entry.dateCreated}"></p>
 				</td>
 				<td>
-					<p th:text="${entry.title}" class="article-title"><a th:text="${entry.title}" th:href="blog/${entry.permalink}"></a></p>
+					<p class="article-title"><a th:text="${entry.title}" th:href="@{/blog/}+ ${entry.permaLink}"></a></p>
 				</td>
 			</tr>
-			
-			<tr>
-				<td class="date">
-					<p>March 3rd</p>
-				</td>
-				<td>
-					<p class="article-title"><a href="#">Clever Dripper brewing recipe</a></p>
-				</td>
-			</tr>
-			<tr>
+	<!--	<tr> NEED TO ADD THIS TO EACH ITERATION.
 				<td></td>
 				<td><p class="article-title"> Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria.</p></td>
-			</tr>
-			<tr>
-				<td class="date">
-					<p>February 27th</p>
-				</td>
-				<td>
-					<p class="article-title"><a href="#">Calvinism as a life-system</a></p>
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><p class="article-title"> Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria.</p></td>
-			</tr>
-			<tr>
-				<td class="date">
-					<p>January 4th</p>
-				</td>
-				<td>
-					<p class="article-title"><a href="#">Welcome to the new year</a></p>
-				</td>
-			</tr>
-			<tr>
-				<td></td>
-				<td><p class="article-title"> Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria.</p></td>
-			</tr>
+			</tr> -->
 		</table>
 	</body>
 	<footer th:include="footer"></footer>
