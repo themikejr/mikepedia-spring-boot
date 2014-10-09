@@ -32,10 +32,11 @@ public class BlogService {
 		return contentList;
 	}
 	
-	public Post findArticle(String articleName) {
+	public Post findArticle(String articlePermaLink) {
 		Post returnValue = null;
 		for (Entry contentEntry: Application.getContentRepository().getContentMap().entrySet()) {
-			if (contentEntry.getKey().equals(articleName)) {
+			System.out.println("Checking to see if " + articlePermaLink + " matches " + contentEntry.getKey());
+			if (contentEntry.getKey().equals(articlePermaLink)) {
 				returnValue = (Post) contentEntry.getValue();
 			}
 		}

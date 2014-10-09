@@ -19,6 +19,7 @@ public class ContentRepository {
 		for (String unparsedPost: unparsedContentList) {
 			Post newPost = ContentParser.parse(unparsedPost);
 			System.out.println("Adding content to repo: " + newPost.getTitle());
+			System.out.println("permalink: " + newPost.getPermaLink());
 			System.out.println(newPost.getDateCreated());
 			contentMap.put(newPost.getPermaLink(), newPost);
 		}

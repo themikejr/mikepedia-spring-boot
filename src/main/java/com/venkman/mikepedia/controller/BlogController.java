@@ -35,10 +35,11 @@ public class BlogController {
     }
     
     @RequestMapping("/blog/{articlePermaLink}")
-    public String getBlogPost(@PathVariable("articlePermaLink") String articleName, HttpServletResponse response) throws IOException {
-    	Post theRequestedPost = blogService.findArticle("articlePermaLink");
+    public String getBlogPost(@PathVariable("articlePermaLink") String articlePermaLink, Model model, HttpServletResponse response) throws IOException {
+    	Post theRequestedPost = blogService.findArticle(articlePermaLink);
     	if (theRequestedPost != null) {
-    		// set the data on the model
+    		System.out.println("Found post object, adding to model: " + theRequestedPost.getTitle());
+    		model.addAttribute("article", theRequestedPost);
     	} else {
     		response.sendError(401);
     	}
