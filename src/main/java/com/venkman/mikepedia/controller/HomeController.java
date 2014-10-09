@@ -11,10 +11,5 @@ public class HomeController {
     public String greeting(Model model) {
         return "home";
     }
-    
-    @RequestMapping("/blog")
-    public String blogEntries(Model model) {
-    	return "blog";
-    }
 
 }

@@ -1,20 +1,26 @@
 package com.venkman.mikepedia;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import org.springframework.stereotype.Component;
 
 import com.venkman.mikepedia.beans.Post;
 
+@Component
 public class ContentRepository {
 	
 	private List<String> unparsedContentList;
-	private List<Post> parsedPostList = new ArrayList<Post>();
+	private Map<String, Post> contentMap = new HashMap<String, Post>();
 	
 	public void build() {
 		System.out.println("Number of posts in unparsed content list: " + unparsedContentList.size());
 		for (String unparsedPost: unparsedContentList) {
 			Post newPost = ContentParser.parse(unparsedPost);
-			parsedPostList.add(newPost);
+			System.out.println("Adding content to repo: " + newPost.getTitle());
+			System.out.println(newPost.getDateCreated());
+			contentMap.put(newPost.getPermaLink(), newPost);
 		}
 	}
 
@@ -26,12 +32,12 @@ public class ContentRepository {
 		this.unparsedContentList = unparsedContentList;
 	}
 
-	public List<Post> getParsedPostList() {
-		return parsedPostList;
+	public Map<String, Post> getContentMap() {
+		return contentMap;
 	}
 
-	public void setParsedPostList(List<Post> parsedPostList) {
-		this.parsedPostList = parsedPostList;
+	public void setContentMap(Map<String, Post> contentMap) {
+		this.contentMap = contentMap;
 	}
 
 }

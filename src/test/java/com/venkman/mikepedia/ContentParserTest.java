@@ -1,6 +1,8 @@
 package com.venkman.mikepedia;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Map;
 
@@ -50,7 +52,16 @@ public class ContentParserTest {
 		assertEquals(2, result.getTags().size());
 		assertEquals("web-dev", result.getTags().get(0));
 		assertEquals("blog-announcements", result.getTags().get(1));
+		assertNotNull(result.getContent());
+		assertTrue(result.getContent().startsWith("<h1>Welcome to my blog.</h1>"));
 		
+	}
+	
+	@Test
+	public void testPostCanBeConvertedFromMarkdownToHtmlProperly() {
+		String result = contentParser.convertMarkdownToHtml(getSampleUnparsedPost());
+		System.out.println(result);
+		assertTrue(result.startsWith("<h1>Welcome to my blog.</h1>"));
 	}
 	
 	private String getSampleUnparsedPost() {

@@ -3,6 +3,7 @@ package com.venkman.mikepedia;
 import java.io.IOException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,7 +15,7 @@ import com.venkman.mikepedia.dao.DropboxDao;
 @EnableAutoConfiguration
 public class Application {
 	
-	public static ContentRepository contentRepository = new ContentRepository();
+	private static ContentRepository contentRepository = new ContentRepository();
 	
 	public static void main(String[] args) throws IOException, DbxException {
 		if (args.length != 1) {
@@ -62,12 +63,20 @@ public class Application {
 		}
 		
 		if (contentList != null) {
-			System.out.println("Adding content from dropbix to content repo.");
-			contentRepository.setUnparsedContentList(contentList);
-			contentRepository.build();
+			System.out.println("Adding content from dropbox to content repo.");
+			getContentRepository().setUnparsedContentList(contentList);
+			getContentRepository().build();
 		}
         
         
+	}
+
+	public static ContentRepository getContentRepository() {
+		return contentRepository;
+	}
+
+	public void setContentRepository(ContentRepository contentRepository) {
+		this.contentRepository = contentRepository;
 	}
 	
 //	private static String authorizeDropbox(DbxWebAuthNoRedirect webAuth) throws IOException {

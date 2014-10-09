@@ -24,6 +24,15 @@
 		</nav>
 
 		<table class="blog-archives">
+			<tr th:each="entry: ${blogEntries}">
+				<td class="date">
+					<p th:text="${entry.dateCreated}"></p>
+				</td>
+				<td>
+					<p th:text="${entry.title}" class="article-title"><a th:text="${entry.title}" href="#"></a></p>
+				</td>
+			</tr>
+			
 			<tr>
 				<td class="date">
 					<p>March 3rd</p>

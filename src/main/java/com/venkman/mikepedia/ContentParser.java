@@ -5,20 +5,20 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-
-
-
-
 import org.apache.commons.lang3.StringUtils;
+import org.pegdown.PegDownProcessor;
 
 import com.venkman.mikepedia.beans.Post;
 
 public class ContentParser {
 	
+	
 	public static Post parse(String unparsedPost) {
 		Post returnValue = new Post();
 		Map<String, String> yamlMap = extractYamlFrontMatter(unparsedPost);
 		setMetaDataAccordingly(returnValue, yamlMap);
+		String html = convertMarkdownToHtml(unparsedPost);
+		returnValue.setContent(html);
 		return returnValue;
 	}
 	
@@ -28,6 +28,7 @@ public class ContentParser {
 		thePost.setDateLastModified(yamlMap.get("dateLastModified"));
 		thePost.setPublished(Boolean.parseBoolean(yamlMap.get("published")));
 		thePost.setTags(Arrays.asList(yamlMap.get("tags").split(" ")));
+		thePost.setPermaLink(yamlMap.get("permalink"));
 		
 	}
 	
@@ -46,6 +47,14 @@ public class ContentParser {
 			scanner.close();
 		}
 		return returnValue;
+	}
+	
+	protected static String convertMarkdownToHtml(String unparsedPost) {
+		String unparsedMarkdown = StringUtils.substringAfterLast(unparsedPost, "---");
+		PegDownProcessor pegdown = new PegDownProcessor();
+		String html = pegdown.markdownToHtml(unparsedMarkdown);
+		return html;
+		
 	}
 	
 	protected static boolean postHasYaml(String post) {

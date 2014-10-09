@@ -8,6 +8,8 @@ public class Post {
 	List<String> tags;
 	String dateCreated;
 	String dateLastModified;
+	String content;
+	String permaLink;
 	boolean isPublished;
 	
 	public String getTitle() {
@@ -39,6 +41,18 @@ public class Post {
 	}
 	public void setPublished(boolean isPublished) {
 		this.isPublished = isPublished;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getPermaLink() {
+		return permaLink;
+	}
+	public void setPermaLink(String permaLink) {
+		this.permaLink = permaLink;
 	}
 
 }
