@@ -9,19 +9,8 @@
 		<link href="css/mikepedia.css" rel="stylesheet" />
 	</head>
 	<body>
-		<header>
-			<h1>Mikepedia</h1>
-			<img src="assets/images/Mikepedia-Logo.png" class="logo" />
-			<!-- <p class="tagline">a personal compendium</p> -->
-		</header>
-		<nav>
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="/blog">Blog</a></li>
-				<li><a href="#">Subjects of Interest</a></li>
-			</ul>
-		</nav>
+		<header th:include="header"></header>
+		<nav th:include="nav"></nav>
 
 		<div class="welcome">
 			<h2>Welcome to the digital home of Michael Brinker.</h2>
@@ -50,11 +39,6 @@
 			</div>
 			<hr />
 		</div>
-		<footer>
-			<div class="social-footer">
-				<p>Follow me on <a href="#">Twitter</a></p>.
-			</div>
-			<div class="hidden-reminder"><p>Memento Mori</p></div>
-		</footer>
+		<footer th:include="footer"></footer>
 	</body>
 </html>
