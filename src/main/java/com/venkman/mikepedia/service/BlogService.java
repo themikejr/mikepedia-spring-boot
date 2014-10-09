@@ -7,15 +7,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map.Entry;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.venkman.mikepedia.Application;
-import com.venkman.mikepedia.ContentRepository;
 import com.venkman.mikepedia.beans.Post;
 
 @Service
 public class BlogService {
+	
+	private final static Logger log = LoggerFactory.getLogger(BlogService.class);
 	
 	public List<Post> contentOrderedByDescendingDate() throws ParseException {
 		List<Post> contentList = retrieveContentMapAsList();
@@ -33,9 +35,9 @@ public class BlogService {
 	}
 	
 	public Post findArticle(String articlePermaLink) {
+		log.info("findArticles: " + articlePermaLink);
 		Post returnValue = null;
 		for (Entry contentEntry: Application.getContentRepository().getContentMap().entrySet()) {
-			System.out.println("Checking to see if " + articlePermaLink + " matches " + contentEntry.getKey());
 			if (contentEntry.getKey().equals(articlePermaLink)) {
 				returnValue = (Post) contentEntry.getValue();
 			}
@@ -44,6 +46,7 @@ public class BlogService {
 	}
 	
 	private List<Post> retrieveContentMapAsList() {
+		log.info("retrieveContentMapAsList()");
 		List<Post> contentMapAsList = new ArrayList<Post>();
 		System.out.println("Getting content from repo: " + Application.getContentRepository().getContentMap().size());
 		for (Entry contentEntry: Application.getContentRepository().getContentMap().entrySet()) {
@@ -54,6 +57,7 @@ public class BlogService {
 	}
 	
 	private Date convertStringToDate(String stringDate) throws ParseException {
+		log.info("convertStringToDate()");
 		SimpleDateFormat formatter = new SimpleDateFormat("MM.dd.yy");
 		return formatter.parse(stringDate);
 	}

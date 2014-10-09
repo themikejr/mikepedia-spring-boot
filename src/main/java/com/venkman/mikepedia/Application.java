@@ -3,9 +3,14 @@ package com.venkman.mikepedia;
 import java.io.IOException;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 
 import com.dropbox.core.DbxException;
@@ -13,8 +18,10 @@ import com.venkman.mikepedia.dao.DropboxDao;
 
 @ComponentScan
 @EnableAutoConfiguration
+@EnableCaching
 public class Application {
 	
+	private final static Logger log = LoggerFactory.getLogger(Application.class);
 	private static ContentRepository contentRepository = new ContentRepository();
 	
 	public static void main(String[] args) throws IOException, DbxException {
@@ -52,24 +59,29 @@ public class Application {
 		List<String> contentList = null;
 		try {
 			DropboxDao.initializeDropboxConnection(authCode);
-			System.out.println("Dropbox connection initialized.");
+			log.info("Dropbox connection initialized.");
 			contentList = DropboxDao.loadContentFromDropbox();
-			System.out.println("Content loaded from Dropbox");
+			log.info("Content loaded from Dropbox");
 		} catch (Exception e) {
-			System.out.println("Something when wrong when loading dropbox content.");
+			log.info("Something when wrong when loading dropbox content.");
 			e.printStackTrace();
-			System.out.println("Exiting...");
+			log.info("Exiting...");
 			System.exit(1);
 		}
 		
 		if (contentList != null) {
-			System.out.println("Adding content from dropbox to content repo.");
+			log.info("Adding content from dropbox to content repo.");
 			getContentRepository().setUnparsedContentList(contentList);
 			getContentRepository().build();
 		}
         
         
 	}
+	
+	@Bean
+    public CacheManager cacheManager() {
+        return new ConcurrentMapCacheManager("articles");
+    }
 
 	public static ContentRepository getContentRepository() {
 		return contentRepository;

@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.venkman.mikepedia.beans.Post;
@@ -11,6 +13,7 @@ import com.venkman.mikepedia.beans.Post;
 @Component
 public class ContentRepository {
 	
+	private final static Logger log = LoggerFactory.getLogger(ContentRepository.class);
 	private List<String> unparsedContentList;
 	private Map<String, Post> contentMap = new HashMap<String, Post>();
 	
@@ -18,9 +21,9 @@ public class ContentRepository {
 		System.out.println("Number of posts in unparsed content list: " + unparsedContentList.size());
 		for (String unparsedPost: unparsedContentList) {
 			Post newPost = ContentParser.parse(unparsedPost);
-			System.out.println("Adding content to repo: " + newPost.getTitle());
-			System.out.println("permalink: " + newPost.getPermaLink());
-			System.out.println(newPost.getDateCreated());
+			log.info("Adding content to repo: " + newPost.getTitle());
+			log.info("permalink: " + newPost.getPermaLink());
+			log.info(newPost.getDateCreated());
 			contentMap.put(newPost.getPermaLink(), newPost);
 		}
 	}
