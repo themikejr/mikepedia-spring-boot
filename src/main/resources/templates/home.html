@@ -25,16 +25,18 @@
 				<hr />
 			</div>
 			<div class="article-preview">
-				<p class="article-preview-title">Coffee as Art</p>
-				<p class="article-preview-body">Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.</p>
+				<p class="article-preview-title" th:text="${article1.title}"></p>
+				<p class="article-preview-body" th:text="${article1.tagline}"></p>
+				<p class="article-preview-body"><a th:href="@{/blog/} + ${article1.permaLink}">Read more</a></p>
 			</div>
 			<div class="article-preview">
-				<p class="article-preview-title">Calvinism is a life-system</p>
-				<p class="article-preview-body">Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.</p>
-			</div>
-			<div class="article-preview">
-				<p class="article-preview-title">Responseive design for html noobz</p>
-				<p class="article-preview-body">Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum. Lorem ipsum.</p>
+				<p class="article-preview-title" th:text="${article2.title}"></p>
+				<p class="article-preview-body" th:text="${article2.tagline}"></p>
+				<p class="article-preview-body"><a th:href="@{/blog/} + ${article2.permaLink}">Read more</a></p>
+			</div><div class="article-preview">
+				<p class="article-preview-title" th:text="${article3.title}"></p>
+				<p class="article-preview-body" th:text="${article3.tagline}"></p>
+				<p class="article-preview-body"><a th:href="@{/blog/} + ${article3.permaLink}">Read more</a></p>
 			</div>
 			<hr />
 		</div>

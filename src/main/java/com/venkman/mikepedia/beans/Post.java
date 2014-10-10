@@ -2,6 +2,8 @@ package com.venkman.mikepedia.beans;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class Post {
 	
 	String title;
@@ -10,6 +12,7 @@ public class Post {
 	String dateLastModified;
 	String content;
 	String permaLink;
+	String tagline;
 	boolean isPublished;
 	
 	public String getTitle() {
@@ -53,6 +56,13 @@ public class Post {
 	}
 	public void setPermaLink(String permaLink) {
 		this.permaLink = permaLink;
+	}
+	
+	public String getTagline() {
+		return (StringUtils.isEmpty(tagline)) ? "Lorem ipsum." : tagline;
+	}
+	public void setTagline(String tagline) {
+		this.tagline = tagline;
 	}
 
 }

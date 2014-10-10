@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.slf4j.Logger;
@@ -60,6 +61,17 @@ public class BlogService {
 		log.info("convertStringToDate()");
 		SimpleDateFormat formatter = new SimpleDateFormat("MM.dd.yy");
 		return formatter.parse(stringDate);
+	}
+
+	
+	// Need to make this smarter
+	public List<Post> getThreeMostRecentArticles() {
+		Map<String, Post> contentMap = Application.getContentRepository().getContentMap();
+		List<Post> contentList = new ArrayList<Post>();
+		for (Entry contentEntry: contentMap.entrySet()) {
+			contentList.add((Post)contentEntry.getValue());
+		}
+		return contentList;
 	}
 
 }

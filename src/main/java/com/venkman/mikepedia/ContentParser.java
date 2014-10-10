@@ -29,6 +29,7 @@ public class ContentParser {
 		thePost.setPublished(Boolean.parseBoolean(yamlMap.get("published")));
 		thePost.setTags(Arrays.asList(yamlMap.get("tags").split(" ")));
 		thePost.setPermaLink(yamlMap.get("permalink"));
+		thePost.setTagline(yamlMap.get("tagline"));
 		
 	}
 	

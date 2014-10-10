@@ -78,7 +78,7 @@ a:hover {
 }
 
 .articles-of-interest {
-	width: 90%;
+	width: 95%;
 	margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -108,7 +108,7 @@ a:hover {
 
 .articles-of-interest .article-preview {
 	display: inline-block;
-	width: 30%;
+	width: 31%;
 	padding: 1%;
 }
 

@@ -18,7 +18,7 @@
 					<p th:text="${entry.dateCreated}"></p>
 				</td>
 				<td>
-					<p class="article-title"><a th:text="${entry.title}" th:href="@{/blog/}+ ${entry.permaLink}"></a></p>
+					<p class="article-title"><a th:text="${entry.title}" th:href="@{/blog/} + ${entry.permaLink}"></a></p>
 				</td>
 			</tr>
 	<!--	<tr> NEED TO ADD THIS TO EACH ITERATION.
