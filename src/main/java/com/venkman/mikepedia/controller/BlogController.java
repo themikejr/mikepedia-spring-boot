@@ -51,5 +51,13 @@ public class BlogController {
     	}
     	return "article";
     }
+    
+    @RequestMapping("/about")
+    public String about(Model model) {
+    	log.info("getAbout");
+    	Post aboutMe = blogService.findArticle("about");
+    	model.addAttribute("article", aboutMe);
+    	return "article";
+    }
 
 }
