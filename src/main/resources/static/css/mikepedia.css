@@ -18,7 +18,7 @@ footer {
 	bottom: 0;
 	left: 0;
 	opacity: 1;
-	background-color: #ad3939;
+	background-color: #892C2C;
 }
 
 
@@ -26,6 +26,7 @@ h1 {
 	font-size: 3em;
 	display: inline-block;
 	margin-bottom: 0%;
+	vertical-align: middle;
 }
 
 nav {
@@ -39,6 +40,7 @@ nav {
 nav li {
 	display: inline-block;
 	padding: 2%;
+	padding-top: 0%
 }
 
 a {
@@ -72,9 +74,10 @@ a:hover {
 }
 
 .logo {
-	height: 80px; 
-	width: 80px;
+	height: 100px; 
+	width: 95px;
 	padding-top:0%;
+	vertical-align: middle;
 }
 
 .articles-of-interest {
