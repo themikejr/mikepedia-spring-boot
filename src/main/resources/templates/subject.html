@@ -12,8 +12,8 @@
 		<header th:include="header"></header>
 		<nav th:include="nav"></nav>
 
-		<table class="blog-archives">
-			<tr th:each="entry: ${contentForSubject}">
+		<table class="blog-archives" th:each="entry: ${contentForSubject}">
+			<tr>
 				<td class="date">
 					<p th:text="${entry.dateCreated}"></p>
 				</td>
@@ -21,7 +21,7 @@
 					<p class="article-title"><a th:text="${entry.title}" th:href="@{/blog/} + ${entry.permaLink}"></a></p>
 				</td>
 			</tr>
-			<tr th:each="entry: ${contentForSubject}">
+			<tr>
 				<td></td>
 				<td><p class="article-title" th:text="${entry.tagline}"></p></td>
 			</tr> 

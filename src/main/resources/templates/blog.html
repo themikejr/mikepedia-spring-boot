@@ -12,8 +12,8 @@
 		<header th:include="header"></header>
 		<nav th:include="nav"></nav>
 
-		<table class="blog-archives">
-			<tr th:each="entry: ${blogEntries}">
+		<table class="blog-archives" th:each="entry: ${blogEntries}">
+			<tr>
 				<td class="date">
 					<p th:text="${entry.dateCreated}"></p>
 				</td>
@@ -21,10 +21,10 @@
 					<p class="article-title"><a th:text="${entry.title}" th:href="@{/blog/} + ${entry.permaLink}"></a></p>
 				</td>
 			</tr>
-	<!--	<tr> NEED TO ADD THIS TO EACH ITERATION.
+			<tr>
 				<td></td>
-				<td><p class="article-title"> Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria. Lorem ipsum, soli deo gloria.</p></td>
-			</tr> -->
+				<td><p class="article-desc" th:text="${entry.tagline}"></p></td>
+			</tr>
 		</table>
 	</body>
 	<footer th:include="footer"></footer>
