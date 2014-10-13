@@ -5,8 +5,8 @@
 		<meta charset="utf-8" />
 		<meta name="robots" content="none" />
 		<title>Mikepedia | A personal compendium </title>
-		<link href="css/font-loader.css" rel="stylesheet" />
-		<link href="css/mikepedia.css" rel="stylesheet" />
+		<link th:href="@{/css/font-loader.css}" rel="stylesheet" />
+		<link th:href="@{/css/mikepedia.css}" rel="stylesheet" />
 	</head>
 	<body>
 		<header th:include="header"></header>
@@ -18,7 +18,7 @@
 			<p>This website is a constant work in progress. The design is an ongoing collaboration with <a href="http://twitter.com/courtneybrinker" target="_blank">@courtneybrinker</a>.If you want, check out the <a th:href="@{/blog/backlog}">changelog/backlog</a>. It's also <a href="http://github.com/themikejr/mikepedia" target="_blank">open source</a>.</p>
 		</article>
 
-		<div class="articles-of-interest">
+		<!--  <div class="articles-of-interest">
 			<div class="articles-of-interest-header">
 				<hr />
 				<p>Recent Writing</p>
@@ -39,7 +39,7 @@
 				<p class="article-preview-body"><a th:href="@{/blog/} + ${article3.permaLink}">Read more</a></p>
 			</div>
 			<hr />
-		</div>
+		</div>  -->
 		<footer th:include="footer"></footer>
 	</body>
 </html>
