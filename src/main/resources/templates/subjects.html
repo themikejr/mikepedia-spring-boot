@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="content-type" content="text/html" />
+		<meta charset="utf-8" />
+		<meta name="robots" content="none" />
+		<title>Mikepedia | A personal compendium </title>
+		<link th:href="@{/css/font-loader.css}" rel="stylesheet" />
+		<link th:href="@{/css/mikepedia.css}" rel="stylesheet" />
+	</head>
+	<body>
+		<header th:include="header"></header>
+		<nav th:include="nav"></nav>
+
+		<article>
+			<h2>Subjects of Interest or How I learned to love writing</h2>
+				<h3>Web-Dev</h3>
+					<p>Sordid tales of a web developer. Articles in this category may be instructional or anecdotal.</p>
+				<h3>Worldview</h3>
+					<p>Discussion regarding my worldview, <em>Classical Christianity</em>. Content is often derived from the class that I teach weekly. See the following subcategories:</p>
+					<ul>
+						<li>Defense (Apologia)</li>
+						<li>Exposition or Teaching (Didache)</li>
+					</ul>
+				<h3>Coffee</h3>
+					<p>Sundry resources pertaining to coffee. Brewing recipes, roasting techniques, reviews/tastings, etc...</p>
+		</article>
+
+		<footer th:include="footer"></footer>
+	</body>
+</html>

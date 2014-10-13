@@ -40,6 +40,11 @@ public class BlogController {
         return "blog";
     }
     
+    @RequestMapping("/blog/subjects")
+    public String getBlogSubjects() {
+    	return "subjects";
+    }
+    
     @RequestMapping("/blog/{articlePermaLink}")
     public String getBlogPost(@PathVariable("articlePermaLink") String articlePermaLink, Model model, HttpServletResponse response) throws IOException {
     	log.info("getArticle: " + articlePermaLink);
