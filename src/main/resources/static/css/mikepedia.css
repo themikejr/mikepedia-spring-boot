@@ -152,6 +152,10 @@ a:hover {
 	position: relative;
 }
 
+.blog-archives p {
+	margin-bottom: 0%;
+	padding-bottom: 0%;
+}
 
 .article-title {
 	margin-left: 1%;

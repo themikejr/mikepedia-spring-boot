@@ -45,6 +45,20 @@ public class BlogController {
     	return "subjects";
     }
     
+    @RequestMapping("/blog/subjects/{subject}")
+    public String getSubject(@PathVariable("subject") String subject, Model model, HttpServletResponse response) throws IOException {
+    	log.info("getSubject(): " + subject);
+    	try {
+			List<Post> contentForSubject = blogService.contentOrderedByDescendingDateForSubject(subject);
+			model.addAttribute("contentForSubject", contentForSubject);
+			log.info("just added attribute: " + contentForSubject.get(0).getTagline());
+		} catch (ParseException e) {
+			e.printStackTrace();
+			response.sendError(500);
+		}
+    	return "subject";
+    }
+    
     @RequestMapping("/blog/{articlePermaLink}")
     public String getBlogPost(@PathVariable("articlePermaLink") String articlePermaLink, Model model, HttpServletResponse response) throws IOException {
     	log.info("getArticle: " + articlePermaLink);

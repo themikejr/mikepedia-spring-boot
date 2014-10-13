@@ -13,6 +13,7 @@ public class Post {
 	String content;
 	String permaLink;
 	String tagline;
+	String subject;
 	boolean isPublished;
 	
 	public String getTitle() {
@@ -63,6 +64,12 @@ public class Post {
 	}
 	public void setTagline(String tagline) {
 		this.tagline = tagline;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 }
