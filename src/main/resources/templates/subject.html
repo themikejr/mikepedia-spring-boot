@@ -13,8 +13,13 @@
 	<body>
 		<header th:include="header"></header>
 		<nav th:include="nav"></nav>
+		
+		<article th:if="${#lists.isEmpty(contentForSubject)}">
+			<p>No content found for the request subject.</p>
+			<p>Please see <a th:href="@{/blog/subjects}">subjects of interest</a>.</p>
+		</article>
 
-		<table class="blog-archives" th:each="entry: ${contentForSubject}">
+		<table class="blog-archives" th:each="entry: ${contentForSubject}"  th:if="${not #lists.isEmpty(contentForSubject)}">
 			<tr>
 				<td class="date">
 					<p th:text="${entry.dateCreated}"></p>

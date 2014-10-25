@@ -51,7 +51,7 @@ public class BlogController {
     	try {
 			List<Post> contentForSubject = blogService.contentOrderedByDescendingDateForSubject(subject);
 			model.addAttribute("contentForSubject", contentForSubject);
-			log.info("just added attribute: " + contentForSubject.get(0).getTagline());
+			//log.info("just added attribute: " + contentForSubject.get(0).getTagline());
 		} catch (ParseException e) {
 			e.printStackTrace();
 			response.sendError(500);
